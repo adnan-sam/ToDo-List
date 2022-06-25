@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do List</title>
-</head>
-<body>
-<% if(dayname=="Saturday" || dayname="Sunday") { %>
-        <h1 style="color: purple"><%= dayname %> To Do List.</h1>
-<% } else { %>
-        <h1 style="color: blue"><%= dayname %> To Do List.</h1>
-<% } %> 
-    <!-- <p>Why are you not working.</p> -->
-</body>
-</html>
+<%- include("header") -%> 
+    <div class="box" id="heading">
+        <h1><%= dayname %></h1>
+    </div>
+    <div class="box">
+        <% listItems.forEach(element => { %>
+            <div class="item">
+                <input type="checkbox">
+                <p><%= element %> </p>
+            </div>
+        <% }) %>
+        
+        <form class="item" action="/" method="post">
+            <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+            <button type="submit" name="btnlist" value="<%= dayname %>">+</button>
+        </form>
+    </div>
+<%- include("footer") -%> 
