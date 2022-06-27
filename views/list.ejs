@@ -1,6 +1,8 @@
 <%- include("header") -%> 
+
     <div class="box" id="heading">
-        <h1><%= dayname %></h1>
+        <h1 class="h1-list"><%= identify %></h1>
+        <p class="day-head"><%= daydate %></p>
     </div>
     <div class="box">
         <% listItems.forEach(element => { %>
@@ -10,14 +12,20 @@
             </div>
         <% }) %>
         
-        <form class="item" action="/kitchen" method="post">
+        <form class="item" action="/btnsubmit" method="post">
             <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
-            <button class="add" type="submit" name="btnlist" value="<%= dayname %>">+</button>
+            <button class="add" type="submit" name="btnlist" value="<%= identify %>">+</button>
         </form>
     </div>
-    <form class="sidebox" action="/check" method="post">
-        <button class="btn-for-home home-btn btns" type="submit" name="tocheck" value="back">Back</button>
-        <button class="btn-for-home home-btn reset btns" type="submit" name="tocheck" value="reset">Reset</button>
-        <button class="btn-for-home home-btn btns" type="submit" name="tocheck" value="clear">Clear</button>
-    </form>
+    <div class="sidebox">
+        <form class="sidebox" action="/back" method="post">
+            <button class="btn-for-home home-btn btns" type="submit">Back</button>    
+        </form>
+        <form class="sidebox" action="/reset" method="post">
+            <button class="btn-for-home home-btn reset btns" type="submit" name="tocheck" value="<%= identify %>">Reset</button>
+        </form>
+        <form class="sidebox" action="/clear" method="post">
+            <button class="btn-for-home home-btn btns" type="submit" name="tocheck" value="<%= identify %>">Clear</button>
+        </form>
+    </div>
 <%- include("footer") -%>
